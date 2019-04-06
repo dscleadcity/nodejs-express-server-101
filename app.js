@@ -7,10 +7,10 @@ const app = express()
 const port = 9000
 
 // Static files Middleware
-app.use('/static', express.static(path.join(__dirname, 'public')))
+app.use('/', express.static(path.join(__dirname, 'public')))
 
-app.use('/', (req, res) => {
-  res.send('<h1><em>Hello</em> World</h1>')
-})
+app.use('/', (req, res, next) => {
+  res.sendFile(path.join(__dirname, 'views', 'home.html')
+)})
 
 app.listen(port, () => console.log(`Server listening on ${port}`))
